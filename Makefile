@@ -1,8 +1,8 @@
 BOARD=zero
 -include Makefile.user
 include boards/$(BOARD)/board.mk
-#CC=arm-none-eabi-gcc
-CC=/home/jason/Downloads/gcc-arm-none-eabi-8-2018-q4-major/bin/arm-none-eabi-gcc
+CC=arm-none-eabi-gcc
+# CC=/home/jason/Downloads/gcc-arm-none-eabi-8-2018-q4-major/bin/arm-none-eabi-gcc
 ifeq ($(CHIP_FAMILY), samd21)
 COMMON_FLAGS = -mthumb -mcpu=cortex-m0plus -Os -g -DSAMD21
 endif
