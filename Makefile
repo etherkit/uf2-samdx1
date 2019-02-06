@@ -1,7 +1,8 @@
 BOARD=zero
 -include Makefile.user
 include boards/$(BOARD)/board.mk
-CC=arm-none-eabi-gcc
+#CC=arm-none-eabi-gcc
+CC=/home/jason/Downloads/gcc-arm-none-eabi-8-2018-q4-major/bin/arm-none-eabi-gcc
 ifeq ($(CHIP_FAMILY), samd21)
 COMMON_FLAGS = -mthumb -mcpu=cortex-m0plus -Os -g -DSAMD21
 endif
@@ -29,9 +30,16 @@ $(WFLAGS)
 UF2_VERSION_BASE = $(shell git describe --dirty --always --tags)
 
 ifeq ($(CHIP_FAMILY), samd21)
+ifeq ($(CHIP_VARIANT), SAMD21G18A)
 LINKER_SCRIPT=scripts/samd21j18a.ld
 BOOTLOADER_SIZE=8192
 SELF_LINKER_SCRIPT=scripts/samd21j18a_self.ld
+endif
+ifeq ($(CHIP_VARIANT), SAMD21G16A)
+LINKER_SCRIPT=scripts/samd21g16a.ld
+BOOTLOADER_SIZE=8192
+SELF_LINKER_SCRIPT=scripts/samd21g16a_self.ld
+endif
 endif
 
 ifeq ($(CHIP_FAMILY), samd51)
@@ -96,9 +104,16 @@ r: run
 b: burn
 l: logs
 
+ifeq ($(CHIP_VARIANT), SAMD21G18A)
 burn: all
-	node scripts/dbgtool.js fuses
-	node scripts/dbgtool.js $(BUILD_PATH)/$(NAME).bin
+	node scripts/dbgtool-18.js fuses
+	node scripts/dbgtool-18.js $(BUILD_PATH)/$(NAME).bin
+endif
+ifeq ($(CHIP_VARIANT), SAMD21G16A)
+burn: all
+	node scripts/dbgtool-16.js fuses
+	node scripts/dbgtool-16.js $(BUILD_PATH)/$(NAME).bin
+endif
 
 run: burn wait logs
 

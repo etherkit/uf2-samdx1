@@ -74,8 +74,8 @@ function main() {
         openocdBin += ".exe"
 
     // let zeroCfg = pkgDir + "hardware/samd/1.6.20/variants/arduino_zero/openocd_scripts/arduino_zero.cfg"
-    let zeroCfg = pkgDir + "hardware/samd/1.0.0/variants/empyrean_beta/openocd_scripts/empyrean_beta.cfg"
-    // let zeroCfg = pkgDir + "hardware/samd/1.0.0/variants/empyrean_alpha/openocd_scripts/empyrean_alpha.cfg"
+    // let zeroCfg = pkgDir + "hardware/samd/1.0.0/variants/empyrean_beta/openocd_scripts/empyrean_beta.cfg"
+    let zeroCfg = pkgDir + "hardware/samd/1.0.0/variants/empyrean_alpha/openocd_scripts/empyrean_alpha.cfg"
 
     let cmd = `telnet_port disabled; init; halt; `
     if (mode == "map")

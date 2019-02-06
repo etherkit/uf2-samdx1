@@ -166,7 +166,12 @@ From CPU config:
 // These two need to be defined as plain decimal numbers, as we're using # on them
 #define FLASH_ROW_SIZE 256
 #ifndef FLASH_NUM_ROWS
+#ifdef __SAMD21G16A__
+#define FLASH_NUM_ROWS 256
+#endif
+#ifdef __SAMD21G18A__
 #define FLASH_NUM_ROWS 1024
+#endif
 #endif
 
 #define NOOP                                                                                       \
@@ -272,14 +277,14 @@ void led_init(void);
 void RGBLED_set_color(uint32_t color);
 
 // Not all targets have a LED
-#if defined(LED_PIN) 
+#if defined(LED_PIN)
 #define LED_MSC_OFF() PINOP(LED_PIN, OUTCLR)
 #define LED_MSC_ON() PINOP(LED_PIN, OUTSET)
 #define LED_MSC_TGL() PINOP(LED_PIN, OUTTGL)
 #else
-#define LED_MSC_OFF() 
-#define LED_MSC_ON() 
-#define LED_MSC_TGL() 
+#define LED_MSC_OFF()
+#define LED_MSC_ON()
+#define LED_MSC_TGL()
 #endif
 
 extern uint32_t timerHigh, resetHorizon;
