@@ -4,7 +4,7 @@
 #define VENDOR_NAME "Etherkit"
 #define PRODUCT_NAME "Empyrean Alpha"
 #define VOLUME_LABEL "EMPYREAN"
-
+#define INDEX_URL "https://www.etherkit.com"
 #define BOARD_ID "SAMD21G18A-EmpyreanAlpha-REVB"
 
 #define USB_VID 0x1209
