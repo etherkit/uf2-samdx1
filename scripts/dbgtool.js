@@ -85,7 +85,8 @@ function main() {
 
     let args = ["-d2",
         "-s", openocdPath + "/share/openocd/scripts/",
-        "-f", zeroCfg,
+        "-f", "interface/cmsis-dap.cfg",
+        "-f", "target/at91samdXX.cfg",
         "-c", cmd]
 
     if (mode == "server") {
