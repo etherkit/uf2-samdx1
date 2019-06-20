@@ -44,7 +44,7 @@
 // Logging to help debugging
 #define USE_LOGS 0
 // Check various conditions; best leave on
-#define USE_ASSERT 0 // 188 bytes
+#define USE_ASSERT 1 // 188 bytes
 // Enable reading flash via FAT files; otherwise drive will appear empty
 #define USE_FAT 1 // 272 bytes
 // Enable index.htm file on the drive
